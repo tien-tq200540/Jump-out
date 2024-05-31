@@ -4,10 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - DeathZone
+  - Obstacles
   - Heart
-  - TerrainLooper
-  - Trap
   layers:
   - Default
   - TransparentFX
