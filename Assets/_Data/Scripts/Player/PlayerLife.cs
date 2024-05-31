@@ -17,13 +17,6 @@ public class PlayerLife : MonoBehaviour
         m_maxHeart = 5;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Obstacles")) LoseHeart();
-
-        if (collision.gameObject.CompareTag("Heart")) GetHeart();
-    }
-
     public void GetHeart()
     {
         if (m_currentHeart >= m_maxHeart)
