@@ -1443,7 +1443,7 @@ GameObject:
   - component: {fileID: 1072418403}
   - component: {fileID: 1072418404}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: MenuManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1477,7 +1477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 704689b8eb66b8e448fcc59684ecc34b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 1621801500}
   transitionTime: 1
 --- !u!1 &1110106610
 GameObject:

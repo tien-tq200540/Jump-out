@@ -38,7 +38,7 @@ public class PlayerLife : MonoBehaviour
             StartCoroutine(PlayerDie());
         } else
         {
-            PlayerCtrl.Instance.playerStatus.setPlayerDisappear();
+            PlayerCtrl.Instance.playerStatus.SetPlayerDisappear();
             PlayerCtrl.Instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             setDeActiveModePlayer();
             Invoke("PlayerRevive", intervalReviveTime);
@@ -49,7 +49,7 @@ public class PlayerLife : MonoBehaviour
     {
 
         Debug.Log("Player Respawn");
-        PlayerCtrl.Instance.playerStatus.setPlayerAppear();
+        PlayerCtrl.Instance.playerStatus.SetPlayerAppear();
         PlayerCtrl.Instance.transform.SetPositionAndRotation(m_playerPositionRevive, Quaternion.identity);
         PlayerCtrl.Instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         setActiveModePlayer();
@@ -59,7 +59,7 @@ public class PlayerLife : MonoBehaviour
     {
         Debug.Log("Player Die");
 
-        PlayerCtrl.Instance.playerStatus.setPlayerDeath();
+        PlayerCtrl.Instance.playerStatus.SetPlayerDeath();
         PlayerCtrl.Instance.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         setDeActiveModePlayer();
         yield return new WaitForSeconds(2f);
