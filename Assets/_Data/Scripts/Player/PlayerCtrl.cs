@@ -20,10 +20,10 @@ public class PlayerCtrl : TienMonoBehaviour
 
     protected override void LoadComponents()
     {
-        this.LoadPlayerMovement();
-        this.LoadPlayerRigidbody2D();
-        this.LoadPlayerLife();
-        this.LoadPlayerStatus();
+        LoadPlayerMovement();
+        LoadPlayerRigidbody2D();
+        LoadPlayerLife();
+        LoadPlayerStatus();
     }
 
     protected virtual void LoadPlayerMovement()
@@ -55,8 +55,8 @@ public class PlayerCtrl : TienMonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Obstacles")) playerLife.LoseHeart();
+        if (collision.gameObject.CompareTag("Obstacles")) playerLife.PlayerLoseHeart();
 
-        if (collision.gameObject.CompareTag("Heart")) playerLife.GetHeart();
+        if (collision.gameObject.CompareTag("Heart")) playerLife.PlayerGetHeart();
     }
 }

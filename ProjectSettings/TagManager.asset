@@ -43,12 +43,9 @@ TagManager:
   - name: Background
     uniqueID: 3795043285
     locked: 0
-  - name: Platform
-    uniqueID: 1793202735
-    locked: 0
-  - name: Border
-    uniqueID: 590848461
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2962781501
     locked: 0
