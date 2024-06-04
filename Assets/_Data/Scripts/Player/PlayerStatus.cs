@@ -42,6 +42,11 @@ public class PlayerStatus : MonoBehaviour
         m_State = State.Death;
     }
 
+    public bool IsPlayerFalling()
+    {
+        return m_State == State.Falling;
+    }
+
     private void UpdateState()
     {
         if (m_State != State.Death)

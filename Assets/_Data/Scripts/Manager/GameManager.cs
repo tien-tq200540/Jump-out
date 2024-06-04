@@ -9,6 +9,7 @@ public class GameManager: TienMonoBehaviour
     public static GameManager Instance { get => instance; }
 
     public TMP_Text UI_NumberOfHeartText;
+    public TMP_Text Ui_ScoreText;
     public GameObject inGameMenu;
 
     //public bool isPaused = false;
@@ -25,6 +26,7 @@ public class GameManager: TienMonoBehaviour
     {
         base.LoadComponents();
         LoadUINumOfHeartText();
+        LoadUIScoreText();
         LoadInGameMenu();
     }
 
@@ -33,6 +35,13 @@ public class GameManager: TienMonoBehaviour
         if (this.UI_NumberOfHeartText != null) return;
         this.UI_NumberOfHeartText = GameObject.Find("NumOfHeartText").GetComponent<TMP_Text>();
         Debug.Log(transform.name + ": Load UI Number of heart text", gameObject);
+    }
+
+    protected virtual void LoadUIScoreText()
+    {
+        if (this.Ui_ScoreText != null) return;
+        this.Ui_ScoreText = GameObject.Find("ScoreText").GetComponent<TMP_Text>();
+        Debug.Log(transform.name + ": Load UI Score text", gameObject);
     }
 
     protected virtual void LoadInGameMenu()
@@ -46,6 +55,8 @@ public class GameManager: TienMonoBehaviour
     private void Update()
     {
         UI_NumberOfHeartText.text = "x" + PlayerCtrl.Instance.playerLife.Heart.ToString();
+        Ui_ScoreText.text = ScoreManager.Instance.Score.ToString();
+        ScoreManager.Instance.UpdateScore();
     }
 
     public void PauseGame()
