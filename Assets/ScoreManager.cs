@@ -10,6 +10,7 @@ public class ScoreManager : TienMonoBehaviour
     [SerializeField] private int score = 0;
     public int Score { get => score; }
     [SerializeField] private int highScore;
+    public bool isGetNewHighScore;
     private int oldPos, newPos;
 
     protected override void Awake()
@@ -17,6 +18,7 @@ public class ScoreManager : TienMonoBehaviour
         base.Awake();
         instance = this;
         if (PlayerPrefs.HasKey("HighScore")) highScore = PlayerPrefs.GetInt("HighScore");
+        isGetNewHighScore = false;
     }
 
     private void Start()
@@ -41,5 +43,6 @@ public class ScoreManager : TienMonoBehaviour
         highScore = score;
         PlayerPrefs.SetInt("HighScore", highScore);
         PlayerPrefs.Save();
+        isGetNewHighScore = true;
     }
 }
