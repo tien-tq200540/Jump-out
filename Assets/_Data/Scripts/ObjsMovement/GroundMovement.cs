@@ -13,6 +13,7 @@ public class GroundMovement : MonoBehaviour
 
     protected virtual void Moving()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        float curSpeed = speed * GameManager.Instance.gameSpeed;
+        transform.Translate(Vector3.up * curSpeed * Time.deltaTime);
     }
 }

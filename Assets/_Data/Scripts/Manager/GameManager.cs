@@ -10,6 +10,9 @@ public class GameManager: TienMonoBehaviour
     static private GameManager instance;
     static public GameManager Instance { get => instance; }
 
+    public float gameSpeed = 1f;
+    protected float increaseSpeed = 0.5f;
+
     public TMP_Text UI_NumberOfHeartText;
     public TMP_Text UI_ScoreText;
 
@@ -28,6 +31,11 @@ public class GameManager: TienMonoBehaviour
     {
         base.Awake();
         instance = this;
+    }
+
+    private void Start()
+    {
+        InvokeRepeating(nameof(this.UpdateGameLevel), 10f, 10f);
     }
 
     protected override void LoadComponents()
@@ -107,18 +115,20 @@ public class GameManager: TienMonoBehaviour
     {
         this.UI_YourScoreText.text = "Your Score:\n" + ScoreManager.Instance.Score.ToString();
         this.UI_YourScoreText.gameObject.SetActive(true);
-        if (ScoreManager.Instance.isGetNewHighScore) this.UI_NewHighScoreText.gameObject.SetActive(true);
-        this.UI_PauseButton.gameObject.SetActive(false);
         this.UI_ResumeButton.gameObject.SetActive(true);
+        if (ScoreManager.Instance.isGetNewHighScore) this.UI_NewHighScoreText.gameObject.SetActive(true);
+
+        this.UI_PauseButton.gameObject.SetActive(false);
         this.UI_BackToMenuButton.gameObject.SetActive(true);
         this.PauseGame();
     }
 
     public void OnClickResumeButton()
     {
-        this.UI_YourScoreText.gameObject.SetActive(false);
-        this.UI_NewHighScoreText.gameObject.SetActive(false);
         this.UI_PauseButton.gameObject.SetActive(true);
+
+        this.UI_YourScoreText.gameObject.SetActive(false);
+        if (this.UI_NewHighScoreText.gameObject.activeInHierarchy) this.UI_NewHighScoreText.gameObject.SetActive(false);
         this.UI_ResumeButton.gameObject.SetActive(false);
         this.UI_BackToMenuButton.gameObject.SetActive(false);
         this.ResumeGame();
@@ -138,5 +148,11 @@ public class GameManager: TienMonoBehaviour
     {
         SceneManager.LoadScene("Game");
         this.ResumeGame();
+    }
+
+    protected virtual void UpdateGameLevel()
+    {
+        this.gameSpeed += this.increaseSpeed;
+        Debug.Log("Increase level");
     }
 }

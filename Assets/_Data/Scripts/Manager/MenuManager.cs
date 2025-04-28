@@ -7,23 +7,22 @@ public class MenuManager : TienMonoBehaviour
     private Animator transitionAnim;
     [SerializeField] private float transitionTime = 1f;
 
-    protected virtual void LoadTransAnim()
-    {
-        if (transitionAnim != null) return;
-        transitionAnim = GameObject.Find("SceneTransition").GetComponent<Animator>();
-        Debug.Log(transform.name + ": Load Trans Anim", gameObject);
-    }
-
     protected override void LoadComponents()
     {
         base.LoadComponents();
-
         LoadTransAnim();
     }
 
     public void PlayButton()
     {
         StartCoroutine(LoadGameScene());
+    }
+
+    protected virtual void LoadTransAnim()
+    {
+        if (transitionAnim != null) return;
+        transitionAnim = GameObject.Find("SceneTransition").GetComponent<Animator>();
+        Debug.Log(transform.name + ": Load Transition animation", gameObject);
     }
 
     public void QuitButton()
@@ -34,7 +33,7 @@ public class MenuManager : TienMonoBehaviour
     IEnumerator LoadGameScene()
     {
         transitionAnim.SetTrigger("End");
-        yield return new WaitForSeconds(this.transitionTime);
+        yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
         DontDestroyOnLoad(gameObject);
         transitionAnim.SetTrigger("Start");

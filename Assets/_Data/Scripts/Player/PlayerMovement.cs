@@ -21,7 +21,7 @@ public class PlayerMovement : TienMonoBehaviour
 
     private void FixedUpdate()
     {
-        m_Rigidbody.velocity = new Vector2(m_inputHorizontal * m_Speed, m_Rigidbody.velocity.y);
+        m_Rigidbody.velocity = new Vector2(m_inputHorizontal * m_Speed * GameManager.Instance.gameSpeed, m_Rigidbody.velocity.y);
     }
 
     public Rigidbody2D GetRigidbody2D() { return m_Rigidbody; }

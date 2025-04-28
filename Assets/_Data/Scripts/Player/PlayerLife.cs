@@ -9,6 +9,8 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] private int m_maxHeart;
     public int Heart { get => m_currentHeart;}
 
+    public bool isImmutable = false;
+
     [SerializeField] protected Vector3 m_playerPositionRevive = new Vector3(0f, 0f, 0f);
     [SerializeField] private float intervalReviveTime = 3f;
     private void Start()
@@ -28,6 +30,7 @@ public class PlayerLife : MonoBehaviour
 
     public void PlayerLoseHeart()
     {
+        if (this.isImmutable) return;
         m_currentHeart -= 1;
         Debug.Log("Player lose 1 heart");
 
